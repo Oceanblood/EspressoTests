@@ -21,7 +21,7 @@ NEXT STEPS:
 2) Use this link for a Privacy Policy field in Google Play Console.
 3) Put policy link to `strings.xml` file.
 ```xml
-   <string name="com_travelpayouts_privacy_policy" tools:ignore="MissingTranslation">Put policy link here</string>
+<string name="com_travelpayouts_privacy_policy" tools:ignore="MissingTranslation">Put policy link here</string>
 ```
 
 ### Sdk initialization
@@ -29,13 +29,13 @@ NEXT STEPS:
 Change `com_travelpayouts_marker` and `com_travelpayouts_api_token` in `strings.xml` file to your marker and api token params. You can find them at [Travelpayouts.com](https://www.travelpayouts.com/developers/api).
 
 ```xml
-  <string name="com_travelpayouts_marker" tools:ignore="MissingTranslation">put marker here</string>
-  <string name="com_travelpayouts_api_token" tools:ignore="MissingTranslation">put api token here</string>
+<string name="com_travelpayouts_marker" tools:ignore="MissingTranslation">put marker here</string>
+<string name="com_travelpayouts_api_token" tools:ignore="MissingTranslation">put api token here</string>
 ```
 
 ### Application id
 
-To publish your application on google play you must set unique application id. All you need to do is change applicationId in `build.gradle` file.
+To publish your application on google play you must set unique application id. All you need to do is change applicationId in `app/build.gradle` file.
 
 ```groovy
 apply plugin: 'com.android.application'
@@ -76,7 +76,7 @@ Google maps is **necessary** for your app. To initialize google maps you need to
 4) On the `Credentials` page, click `Create credentials > API key`. 
    `The API key created` dialog displays your newly created API key (an encrypted string).
 6) Copy your `API key` and Click `Close`. 
-7) Put `API Key` to manifestPlaceholders in `build.gradle` file.
+7) Put `API Key` to manifestPlaceholders in `app/build.gradle` file.
 ```groovy
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
@@ -106,29 +106,25 @@ Best way to create application icon is using Asset Studio tool. Steps:
 
 For more information – [Create app icons with Image Asset Studio](https://developer.android.com/studio/write/image-asset-studio)
 
-### Firebase analytics integration
-
-To track events you need to:
-1) Create new or open existing firebase project in [firebase console](https://console.firebase.google.com/)
-2) Add new android applicaton (Add app -> Android)
-3) Download `google-services.json` and place it into the `app` folder
-4) Uncomment `//apply plugin: 'com.google.gms.google-services'` in `app/build.gradle`
-
 ### Colors customization (OPTIONAL)
 To customize colors of your app change `primary`, `primaryButton`, `positiveButton` and `primary_dark` in `colors.xml`. This is main TravelPayouts Travel App colors
 
 ```xml
-  <color name="primary">#5A6D87</color>
-  <color name="primary_dark">#475972</color>
-  <color name="primaryButton">#F48C6B</color>
-  <color name="positiveButton">#35C772</color>
+<color name="primary">#5A6D87</color>
+<color name="primary_dark">#475972</color>
+<color name="primaryButton">#F48C6B</color>
+<color name="positiveButton">#35C772</color>
 ```
 
-### Crashlytics integration (OPTIONAL)
+### Firebase integration
 
-To receive crashes you need to:
-1) Login to [Fabric](https://fabric.io/)
-2) Copy `API Key` (Setting -> Organizatons -> `Your organization` -> API Key)
-3) Open `app/build.gradle`
-4) Paste your `API Key` to `FABRIC_API_KEY`. (Code should look like this: `FABRIC_API_KEY: "your_api_key"`)
-5) Uncomment `//apply plugin: 'io.fabric'`
+To track events and receive crashes you need to:
+1) Create new or open existing firebase project in [firebase console](https://console.firebase.google.com/)
+2) Add new android applicaton (Add app -> Android)
+3) Download `google-services.json` and place it into the `app` folder
+4) Uncomment `//apply plugin: 'com.google.gms.google-services'` and `//apply plugin: 'io.fabric'` in `app/build.gradle`
+5) Uncomment `//classpath 'com.google.gms:google-services:4.2.0'` in `build.gradle`
+6) Go to console "Crashlytics" section
+7) Click "Set up Crashlytics"
+8) Select "No, this app does not have any version of the Crashlytics SDK installed" and click "Next"
+9) Run your app to receive analytics and crashes

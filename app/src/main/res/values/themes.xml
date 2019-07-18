@@ -1,7 +1,7 @@
 <resources>
 
-  <style name="AppTheme.Launcher">
-    <item name="android:windowBackground">@drawable/splash</item>
-  </style>
+    <style name="TravelAppTheme" parent="AppThemeBase">
+        <item name="android:windowBackground">@drawable/splash</item>
+    </style>
 
 </resources>

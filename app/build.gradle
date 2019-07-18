@@ -1,37 +1,30 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 //apply plugin: 'com.google.gms.google-services'
 //apply plugin: 'io.fabric'
 
 android {
     compileSdkVersion 28
+
     defaultConfig {
         applicationId "com.travelpayouts.travel.app"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-
-        manifestPlaceholders = [
-                GOOGLE_API_KEY: "",
-                FABRIC_API_KEY: ""
-        ]
-
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
-
-        proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        manifestPlaceholders = [
+                GOOGLE_API_KEY: ""
+        ]
     }
 
     buildTypes {
-        debug {
-            shrinkResources false
-            minifyEnabled false
-        }
         release {
-            shrinkResources true
             minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            ndk { abiFilters "armeabi", "armeabi-v7a", "x86" }
         }
     }
 
@@ -43,28 +36,22 @@ android {
     packagingOptions {
         exclude 'META-INF/*.kotlin_module'
     }
-
-    lintOptions {
-        abortOnError false
-    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
-    implementation("com.travelpayouts:travelapp:0.0.3-SNAPSHOT") {
+    implementation("com.travelpayouts:travelsdk:1.0.2") {
         exclude(group: 'com.squareup.leakcanary')
         exclude(group: 'org.apache.maven')
         exclude(group: 'xpp3')
         exclude(group: 'com.google.android.gms', module: 'play-services-places-placereport')
+        exclude(group: 'com.google.android.gms', module: 'play-services-places')
     }
-
-    implementation "com.squareup.leakcanary:leakcanary-android-no-op:1.6.3"
+    compileOnly "com.google.android.wearable:wearable:2.4.0"
     implementation "com.google.dagger:dagger:$dagger_version"
-    implementation "com.google.dagger:dagger-compiler:$dagger_version"
-    implementation "androidx.room:room-rxjava2:$room_version"
-    implementation "androidx.room:room-compiler:$room_version"
-    implementation "androidx.room:room-runtime:$room_version"
-
     annotationProcessor "com.google.dagger:dagger-compiler:$dagger_version"
+    implementation "androidx.room:room-rxjava2:$room_version"
+    implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
+    implementation "com.squareup.leakcanary:leakcanary-android-no-op:1.6.3"
 }

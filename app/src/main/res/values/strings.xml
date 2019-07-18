@@ -2,6 +2,6 @@
   <string name="app_name" tools:ignore="MissingTranslation">Travel App</string>
   <string name="com_travelpayouts_marker" tools:ignore="MissingTranslation"></string>
   <string name="com_travelpayouts_api_token" tools:ignore="MissingTranslation"></string>
-  <string name="com_travelpayouts_search_host" tools:ignore="MissingTranslation">www.travel-api.pw</string>
-  <string name="com_travelpayouts_privacy_policy" tools:ignore="MissingTranslation">https://ios.jetradar.com/privacy_policy_template/index.html</string>
+  <string name="com_travelpayouts_flight_engine_host" tools:ignore="MissingTranslation">https://www.travel-api.pw</string>
+  <string name="com_travelpayouts_privacy_policy" tools:ignore="MissingTranslation"></string>
 </resources>
