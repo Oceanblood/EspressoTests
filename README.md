@@ -1,30 +1,34 @@
 Travelpayouts Travel App For Android
 =================
 
-Travelpayouts Travel App is a application using flight and hotel search engines. When your customer books a flight or hotel, we pay you a [commission fee](https://www.travelpayouts.com). Framework is based on leading flight search engines [Aviasales](http://www.aviasales.ru), [JetRadar](http://www.jetradar.com) and hotel search engine [Hotellook](http://www.hotellook.ru).
+Travelpayouts Travel App is a application using flight and hotel search engines. When your customer books a flight or hotel, we pay you a [commission fee](https://www.travelpayouts.com). Framework is based on leading flight search engines [Aviasales](http://www.aviasales.ru), [JetRadar](http://www.jetradar.com) and hotel search engine [Hotellook](http://www.hotellook.com).
 
 Travelpayouts Travel App supports all Android devices with Android API 21 and higher.
 
 <br>To get your API key, track statistics and payments please sign up to [Travelpayouts Travel Affiliate Network](https://www.travelpayouts.com/?utm_source=github&utm_medium=android_sdk).
-<br>Learn more about earnings in [Travelpayouts FAQ](https://support.travelpayouts.com/hc/en-us/articles/203955613-Commission-and-payments).
+<br>Learn more about earnings in [Travelpayouts FAQ](https://support.travelpayouts.com/hc/en-us/articles/203955613).
 <br>Video [instruction](https://www.youtube.com/watch?v=dQw4w9WgXcQ) 
 
-## Example of creating TravelPayouts App
+## How to create your own Travel App for Android
 
 ### Privacy Policy
 
 Privacy Policy is **REQUIRED** for your app. If it is missing, your app may be removed from the Google Play at anytime.  
 We've included a default Privacy Policy in the template app, but you should create YOUR OWN.  
-(you can use online services like [privacypolicytemplate.net](https://privacypolicytemplate.net) or [App Privacy Policy Generator](https://app-privacy-policy-generator.firebaseapp.com)).  
-NEXT STEPS:
-1) Upload privacy policy to your website and copy a link to it.
-2) Use this link for a Privacy Policy field in Google Play Console.
-3) Put policy link to `strings.xml` file.
+
+You can use online services like [privacypolicytemplate.net](https://privacypolicytemplate.net) or [App Privacy Policy Generator](https://app-privacy-policy-generator.firebaseapp.com). 
+
+When you have created own Privacy Policy upload it to your website and copy the link to it.
+
+Use this link for a Privacy Policy field in Google Play Console.
+
+Put the Policy link to `strings.xml` file.
+
 ```xml
 <string name="com_travelpayouts_privacy_policy" tools:ignore="MissingTranslation">Put policy link here</string>
 ```
 
-### Sdk initialization
+### SDK initialization
 
 Change `com_travelpayouts_marker` and `com_travelpayouts_api_token` in `strings.xml` file to your marker and api token params. You can find them at [Travelpayouts.com](https://www.travelpayouts.com/developers/api).
 
@@ -35,7 +39,7 @@ Change `com_travelpayouts_marker` and `com_travelpayouts_api_token` in `strings.
 
 ### Application id
 
-To publish your application on google play you must set unique application id. All you need to do is change applicationId in `app/build.gradle` file.
+To publish your application on Google Play you must set unique application id. All you need to do is change `applicationId` in `app/build.gradle` file.
 
 ```groovy
 apply plugin: 'com.android.application'
@@ -60,7 +64,7 @@ android {
 
 ### Application name
 
-Change application name in `strings.xml` file.
+Change the application name in `strings.xml` file.
 
 ```xml
 <string name="app_name" tools:ignore="MissingTranslation">Put appname here</string>
@@ -68,15 +72,16 @@ Change application name in `strings.xml` file.
 
 ### Google maps initialization
 
-Google maps is **necessary** for your app. To initialize google maps you need to:
+Google maps is **necessary** for your app. To initialize Google maps you need to:
 
-1) Go to the Google [Cloud Platform Console](https://cloud.google.com/console/google/maps-apis/overview).
+1) Go to the [Google Cloud Platform Console](https://cloud.google.com/console/google/maps-apis/overview).
 2) From the Project drop-down menu, select or create the project for which you want to add an API key.
-3) From the  Navigation menu, select `APIs & Services > Credentials`.
-4) On the `Credentials` page, click `Create credentials > API key`. 
-   `The API key created` dialog displays your newly created API key (an encrypted string).
-6) Copy your `API key` and Click `Close`. 
-7) Put `API Key` to manifestPlaceholders in `app/build.gradle` file.
+3) From the Navigation menu, select **APIs & Services** > **Credentials**.
+4) On the `Credentials` page, click **Create credentials** > **API key**. 
+   The **API key created** dialog displays your newly created API key (an encrypted string).
+6) Copy your **API key** and click **Close**. 
+7) Put **API Key** to `manifestPlaceholders` in `app/build.gradle` file.
+
 ```groovy
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
@@ -97,17 +102,18 @@ android {
 
 ### App icons creation
 
-Best way to create application icon is using Asset Studio tool. Steps:
-1) In the `Project` window, select the Android view.
-2) Right-click the `res` folder and select `New > Image Asset`.
+Best way to create the application icon is using **Asset Studio tool**:
+1) In the **Project** window, select the **Android view**.
+2) Right-click the **res** folder and select **New > Image Asset**.
 3) Set up foreground and background layers.
-`IMPORTANT!` Do not change icon name.
-4) Click `Next > Finish`.
+**IMPORTANT!** Do not change icon name.
+4) Click **Next** > **Finish**.
 
 For more information – [Create app icons with Image Asset Studio](https://developer.android.com/studio/write/image-asset-studio)
 
 ### Colors customization (OPTIONAL)
-To customize colors of your app change `primary`, `primaryButton`, `positiveButton` and `primary_dark` in `colors.xml`. This is main TravelPayouts Travel App colors
+
+To customize colors of your app change `primary`, `primaryButton`, `positiveButton` and `primary_dark` in `colors.xml`. This is main Travelpayouts Travel App colors
 
 ```xml
 <color name="primary">#5A6D87</color>
@@ -118,13 +124,14 @@ To customize colors of your app change `primary`, `primaryButton`, `positiveButt
 
 ### Firebase integration
 
-To track events and receive crashes you need to:
-1) Create new or open existing firebase project in [firebase console](https://console.firebase.google.com/)
-2) Add new android applicaton (Add app -> Android)
-3) Download `google-services.json` and place it into the `app` folder
+To track events and log crashes you need to add Firebase integration:
+
+1) Create a new or open existing Firebase project in the [Firebase console](https://console.firebase.google.com/)
+2) Add the new Android applicaton (**Add app** -> **Android**)
+3) Download **google-services.json** and place it into the **app** folder
 4) Uncomment `//apply plugin: 'com.google.gms.google-services'` and `//apply plugin: 'io.fabric'` in `app/build.gradle`
 5) Uncomment `//classpath 'com.google.gms:google-services:4.2.0'` in `build.gradle`
-6) Go to console "Crashlytics" section
-7) Click "Set up Crashlytics"
-8) Select "No, this app does not have any version of the Crashlytics SDK installed" and click "Next"
-9) Run your app to receive analytics and crashes
+6) Go to the console **Crashlytics** section
+7) Click **Set up Crashlytics**
+8) Select "No, this app does not have any version of the Crashlytics SDK installed" and click **Next**
+9) Run your app to receive analytics
