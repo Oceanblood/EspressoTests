@@ -1,6 +1,16 @@
 Travelpayouts Travel App For Android
 =================
 
+ - [Privacy Policy](https://github.com/travelpayouts/travel-app-android#privacy-policy)
+ - [SDK initialization](https://github.com/travelpayouts/travel-app-android#sdk-initialization)
+ - [Application id](https://github.com/travelpayouts/travel-app-android#application-id)
+ - [Application name](https://github.com/travelpayouts/travel-app-android#application-name)
+ - [Google maps initialization](https://github.com/travelpayouts/travel-app-android#google-maps-initialization)
+ - [App icons creation](https://github.com/travelpayouts/travel-app-android#app-icons-creation)
+ - [Colors customization](https://github.com/travelpayouts/travel-app-android#colors-customization-optional)
+ - [Firebase integration](https://github.com/travelpayouts/travel-app-android#firebase-integration)
+ - [Template app screenshots](https://github.com/travelpayouts/travel-app-android#template-app-screenshots)
+
 Travelpayouts Travel App is a application using flight and hotel search engines. When your customer books a flight or hotel, we pay you a [commission fee](https://www.travelpayouts.com). Framework is based on leading flight search engines [Aviasales](http://www.aviasales.ru), [JetRadar](http://www.jetradar.com) and hotel search engine [Hotellook](http://www.hotellook.com).
 
 Travelpayouts Travel App supports all Android devices with Android API 21 and higher.
@@ -77,7 +87,7 @@ Google maps is **necessary** for your app. To initialize Google maps you need to
 1) Go to the [Google Cloud Platform Console](https://cloud.google.com/console/google/maps-apis/overview).
 2) From the Project drop-down menu, select or create the project for which you want to add an API key.
 3) From the Navigation menu, select **APIs & Services** > **Credentials**.
-4) On the `Credentials` page, click **Create credentials** > **API key**. 
+4) On the **Credentials** page, click **Create credentials** > **API key**. 
    The **API key created** dialog displays your newly created API key (an encrypted string).
 6) Copy your **API key** and click **Close**. 
 7) Put **API Key** to `manifestPlaceholders` in `app/build.gradle` file.
@@ -135,3 +145,19 @@ To track events and log crashes you need to add Firebase integration:
 7) Click **Set up Crashlytics**
 8) Select "No, this app does not have any version of the Crashlytics SDK installed" and click **Next**
 9) Run your app to receive analytics
+
+### Template app screenshots
+
+#### Flights
+
+<img src="https://cdn.travelpayouts.com/SDK/Android/device-2019-07-16-144731.png" width="30%">
+<img src="https://cdn.travelpayouts.com/SDK/Android/device-2019-07-16-144701.png" width="30%">
+<img src="https://cdn.travelpayouts.com/SDK/Android/device-2019-07-16-144807.png" width="30%">
+<img src="https://cdn.travelpayouts.com/SDK/Android/device-2019-07-16-144936.png" width="30%">
+
+#### Hotels
+
+<img src="https://cdn.travelpayouts.com/SDK/Android/device-2019-07-16-144219.png" width="30%">
+<img src="https://cdn.travelpayouts.com/SDK/Android/device-2019-07-16-144353.png" width="30%">
+<img src="https://cdn.travelpayouts.com/SDK/Android/device-2019-07-16-144446.png" width="30%">
+<img src="https://cdn.travelpayouts.com/SDK/Android/device-2019-07-16-144458.png" width="30%">
