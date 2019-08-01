@@ -16,7 +16,7 @@ Travelpayouts Travel App is a application using flight and hotel search engines.
 Travelpayouts Travel App supports all Android devices with Android API 21 and higher.
 
 <br>To get your API key, track statistics and payments please sign up to [Travelpayouts Travel Affiliate Network](https://www.travelpayouts.com/?utm_source=github&utm_medium=android_sdk).
-<br>Learn more about earnings in [Travelpayouts FAQ](https://support.travelpayouts.com/hc/en-us/articles/203955613).
+<br>Learn more about earnings in [Travelpayouts FAQ](https://support.travelpayouts.com/hc/en-us/categories/115000474527).
 <br>Video [instruction](https://www.youtube.com/watch?v=dQw4w9WgXcQ) 
 
 ## How to create your own Travel App for Android
