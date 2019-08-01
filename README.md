@@ -1,6 +1,8 @@
 Travelpayouts Travel App For Android
 =================
 
+Russian version of the documentation you can find [here](https://github.com/travelpayouts/travel-app-android/blob/master/README_RU.md). 
+
  - [Privacy Policy](https://github.com/travelpayouts/travel-app-android#privacy-policy)
  - [SDK initialization](https://github.com/travelpayouts/travel-app-android#sdk-initialization)
  - [Application id](https://github.com/travelpayouts/travel-app-android#application-id)
