@@ -20,6 +20,8 @@ android {
         ]
 
         ndk.abiFilters 'armeabi-v7a','arm64-v8a','x86','x86_64'
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -42,4 +44,29 @@ android {
 
 dependencies {
     implementation ('com.travelpayouts:travel-sdk:1.1.6')
+    implementation 'com.travelpayouts:as-app-base:1.1.6'
+    implementation 'com.travelpayouts:as-core-legacy:1.1.6'
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    // For Junit 4-based tests
+    testImplementation "junit:junit:4.12"
+
+    // AndroidJunitRunner and Junit Rules
+    androidTestUtil 'androidx.test:orchestrator:1.2.0'
+    api 'androidx.test:core:1.2.0'
+    api "androidx.test.espresso:espresso-core:3.2.0"
+    api 'androidx.test:runner:1.2.0'
+    api 'androidx.test:rules:1.3.0-alpha03'
+    // Assertion
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    //idling
+    androidTestImplementation 'androidx.test.espresso:espresso-idling-resource:3.2.0'
+    androidTestCompile('com.android.support.test.espresso:espresso-contrib:2.0') {
+        exclude group: 'com.android.support', module: 'appcompat'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude module: 'recyclerview-v7'
+        androidTestCompile 'com.android.support.test.espresso:espresso-core:2.0'
+    }
+
+
+
 }

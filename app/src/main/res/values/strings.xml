@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
   <string name="app_name" tools:ignore="MissingTranslation">Travel App</string>
-  <string name="com_travelpayouts_marker" tools:ignore="MissingTranslation"></string>
-  <string name="com_travelpayouts_api_token" tools:ignore="MissingTranslation"></string>
+  <string name="com_travelpayouts_marker" tools:ignore="MissingTranslation">ec6c58585cf8d80c374f4c4343911f05</string>
+  <string name="com_travelpayouts_api_token" tools:ignore="MissingTranslation">160941</string>
   <string name="com_travelpayouts_flight_engine_host" tools:ignore="MissingTranslation">https://www.travel-api.pw</string>
-  <string name="com_travelpayouts_privacy_policy" tools:ignore="MissingTranslation"></string>
+  <string name="com_travelpayouts_privacy_policy" tools:ignore="MissingTranslation">true</string>
 </resources>
