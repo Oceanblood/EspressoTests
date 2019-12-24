@@ -10,7 +10,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import ru.aviasales.ui.activity.MainActivity
-import ru.aviasales.ui.activity.RobotScreens.MainRobot
+import ru.aviasales.ui.activity.Robots.MainRobot
 import java.io.File
 
 
@@ -58,11 +58,11 @@ class TestExample {
 
     @Test
     fun addPassenger() {
-       MainRobot()
+        MainRobot()
             .chosePassanger()
             .addAdult()
         MainRobot()
-            .verifyNumberOfPassangers("2 passengers, economy")
+            .verifyNumberOfPassengers("2 passengers, economy")
     }
 
     @Test
@@ -70,15 +70,16 @@ class TestExample {
         MainRobot()
             .chosePassanger()
             .addAdult()
-            .verifyNumberOfPassangers("2 passengers, economy")
+            .verifyNumberOfPassengers("2 passengers, economy")
             .removeAdult()
-            .verifyNumberOfPassangers("1 passenger, economy")
+            .verifyNumberOfPassengers("1 passenger, economy")
 
     }
 
     @Test
     fun choseBusinessClass() {
         MainRobot()
+            .chosePassanger()
     }
 
     @Test

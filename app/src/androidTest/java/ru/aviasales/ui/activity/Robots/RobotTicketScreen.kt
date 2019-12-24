@@ -1,4 +1,4 @@
-package ru.aviasales.ui.activity.RobotScreens
+package ru.aviasales.ui.activity.Robots
 
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
@@ -53,13 +53,11 @@ class MainRobot {
         val numberOfPassangersView = withId(R.id.passengersTitle)
         val economyClassBtn = withId(R.id.rbEconomy)
         val businessBtn = withId(R.id.rbBusiness)
-
-
     }
 
     // Main Functions
 
-    fun verifyNumberOfPassangers(number: String): MainRobot {
+    fun verifyNumberOfPassengers(number: String): MainRobot {
         onView(withId(R.id.passengersTitle)).check(ViewAssertions.matches(withText(number)))
         return this
     }
@@ -68,7 +66,9 @@ class MainRobot {
         onView(departureDateBtn).perform(click())
         onView(dateNumberBtn).isVisible()
         onView(dateNumberBtn).perform(click())
-        //onData(dateNumberBtn).inAdapterView(addPassangerBtn).atPosition(0).perform(click())
+        // All of this is not working
+        //onData(anything()).inAdapterView((dateNumberBtn)).atPosition(0).perform(click())
+        //onData(dateNumberBtn).inAdapterView(dateNumberBtn).atPosition(0).perform(click())
         return this
     }
 
@@ -160,6 +160,27 @@ class MainRobot {
         chosePassanger()
         onView(removePassangerBtn).isVisible()
         onView(removePassangerBtn).perform(click())
+        return this
+    }
+
+    fun choseEconomyClass(): MainRobot {
+        chosePassanger()
+        onView(economyClassBtn).isVisible()
+        onView(economyClassBtn).perform(click())
+        return this
+    }
+
+    fun choseBusinessClass(): MainRobot {
+        chosePassanger()
+        onView(businessBtn).isVisible()
+        onView(businessBtn).perform(click())
+        return this
+    }
+
+    fun verifyEconomySelected(): MainRobot {
+        chosePassanger()
+        onView(economyClassBtn).isVisible()
+        // onView(economyClassBtn).
         return this
     }
 
