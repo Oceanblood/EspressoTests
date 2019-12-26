@@ -80,6 +80,7 @@ class TestExample {
     fun choseBusinessClass() {
         MainRobot()
             .chosePassanger()
+            .choseBusinessClass()
     }
 
     @Test

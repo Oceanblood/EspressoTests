@@ -167,6 +167,7 @@ class MainRobot {
         chosePassanger()
         onView(economyClassBtn).isVisible()
         onView(economyClassBtn).perform(click())
+
         return this
     }
 
@@ -181,6 +182,12 @@ class MainRobot {
         chosePassanger()
         onView(economyClassBtn).isVisible()
         // onView(economyClassBtn).
+        return this
+    }
+
+    fun closePassengers(): MainRobot {
+        onView(closePassengersBtn).isVisible()
+        onView(closePassengersBtn).perform(click())
         return this
     }
 
