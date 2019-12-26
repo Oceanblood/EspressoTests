@@ -78,7 +78,7 @@ class MainRobot {
                 withParent(
                     allOf(
                         withId(R.id.calendar_grid),
-                        withParent(withParentIndex(2))
+                        withParent(withParentIndex(0))
                     )
                 )
             )

@@ -122,7 +122,7 @@ class Smoke {
     fun choseArrivalDate() {
         MainRobot()
             .choseArrivalDate()
-            .choseDepartureDay()
+            .choseArrivalDay()
             .verifyArrivalDate("8 January, Wed")
     }
 
