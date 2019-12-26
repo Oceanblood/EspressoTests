@@ -17,7 +17,7 @@ import java.io.File
 
 @RunWith(AndroidJUnit4::class)
 
-class TestExample {
+class Smoke {
 
     @get:Rule
     val activityRule = ActivityTestRule(MainActivity::class.java, false, false)
@@ -38,9 +38,9 @@ class TestExample {
     @Test
     fun searchTicket() {
         MainRobot()
-            .choseDeparture()
+            .choseDepartureCity()
             .enterDepartureCity("Berlin")
-            .choseArrival()
+            .choseArrivalCity()
             .enterArrivalCity("Minsk")
             .tapOnSearchBtn()
         ResultRobot()
@@ -50,9 +50,9 @@ class TestExample {
     @Test
     fun switchAirports() {
         MainRobot()
-            .choseDeparture()
+            .choseDepartureCity()
             .enterDepartureCity("Berlin")
-            .choseArrival()
+            .choseArrivalCity()
             .enterArrivalCity("Minsk")
             .switchAirports()
             .checkAirportsChanges("Minsk", "Berlin")
@@ -61,7 +61,7 @@ class TestExample {
     @Test
     fun addPassenger() {
         MainRobot()
-            .chosePassanger()
+            .openPassengers()
             .addAdult()
             .closePassengers()
             .verifyClassAndNumberOfPassenger("2 passengers, economy")
@@ -70,7 +70,7 @@ class TestExample {
     @Test
     fun removePassenger() {
         MainRobot()
-            .chosePassanger()
+            .openPassengers()
             .addAdult()
             .closePassengers()
             .verifyClassAndNumberOfPassenger("2 passengers, economy")
@@ -83,7 +83,7 @@ class TestExample {
     @Test
     fun choseBusinessClass() {
         MainRobot()
-            .chosePassanger()
+            .openPassengers()
             .choseBusinessClass()
             .closePassengers()
             .verifyClassAndNumberOfPassenger("1 passenger, business")
@@ -92,12 +92,21 @@ class TestExample {
     @Test
     fun switchBusinessOnEconomyClass() {
         MainRobot()
-            .chosePassanger()
+            .openPassengers()
             .choseBusinessClass()
             .closePassengers()
             .verifyClassAndNumberOfPassenger("1 passenger, business")
             .choseEconomyClass()
             .closePassengers()
             .verifyClassAndNumberOfPassenger("1 passenger, economy")
+    }
+
+    @Test
+    fun userDontNeedReturnTicket() {
+        MainRobot()
+            .choseArrivalDate()
+            .tapOnDontNeedTicketBtn()
+            .verifyArrivalDateText("+ Add return flight")
+
     }
 }
