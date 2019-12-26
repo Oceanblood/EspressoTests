@@ -32,7 +32,6 @@ class MainRobot {
         val searchTicketsBtn = withId(R.id.searchButton)
         val editArrAndDepfield = withId(R.id.editTextMessage)
         val selectedAirportBtn = withId(R.id.rvSelectedAirport)
-        val dateNumberBtn = withId(R.id.calendar_grid)
         val passangersBtn = withId(R.id.passengersView)
 
         // Bottom sheet Btns & Views
@@ -61,6 +60,30 @@ class MainRobot {
             allOf(withId(R.id.tvDate), isDescendantOfA(withId(R.id.departureDateView)))
         val arrivalDateText =
             allOf(withId(R.id.tvDate), isDescendantOfA(withId(R.id.returnDateView)))
+        val dateNumberBtn = withId(R.id.calendar_grid)
+        val calendarDepartureDate = allOf(
+            withText("3"),
+            withParent(
+                withParent(
+                    allOf(
+                        withId(R.id.calendar_grid),
+                        withParent(withParentIndex(0))
+                    )
+                )
+            )
+        )
+        val calendarArrivalDate = allOf(
+            withText("8"),
+            withParent(
+                withParent(
+                    allOf(
+                        withId(R.id.calendar_grid),
+                        withParent(withParentIndex(2))
+                    )
+                )
+            )
+        )
+
     }
 
     // Main Functions
@@ -70,13 +93,15 @@ class MainRobot {
         return this
     }
 
-    fun addFlightDate(): MainRobot {
-        onView(departureDateBtn).perform(click())
-        onView(dateNumberBtn).isVisible()
-        onView(dateNumberBtn).perform(click())
-        // All of this is not working
-        //onData(anything()).inAdapterView((dateNumberBtn)).atPosition(0).perform(click())
-        //onData(dateNumberBtn).inAdapterView(dateNumberBtn).atPosition(0).perform(click())
+    fun verifyArrivalDate(arrivalDate: String): MainRobot {
+        onView(arrivalDateText).isVisible()
+        onView(arrivalDateText).check(ViewAssertions.matches(withText(arrivalDate)))
+        return this
+    }
+
+    fun verifyDepartureDate(departureDate: String): MainRobot {
+        onView(departureDateText).isVisible()
+        onView(departureDateText).check(ViewAssertions.matches(withText(departureDate)))
         return this
     }
 
@@ -104,7 +129,7 @@ class MainRobot {
         return this
     }
 
-    fun choseDeparureDate(): MainRobot {
+    fun choseDepartureDate(): MainRobot {
         onView(departureDateBtn).isVisible()
         onView(departureDateBtn).perform(click())
         return this
@@ -215,6 +240,20 @@ class MainRobot {
 
     fun verifyArrivalDateText(text: String): MainRobot {
         onView(arrivalDateText).check(ViewAssertions.matches(withText(text)))
+        return this
+    }
+
+    fun choseDepartureDay(): MainRobot {
+        onView(dateNumberBtn).isVisible()
+        onView(calendarDepartureDate).isVisible()
+        onView(calendarDepartureDate).perform(click())
+        return this
+    }
+
+    fun choseArrivalDay(): MainRobot {
+        onView(dateNumberBtn).isVisible()
+        onView(calendarArrivalDate).isVisible()
+        onView(calendarArrivalDate).perform(click())
         return this
     }
 

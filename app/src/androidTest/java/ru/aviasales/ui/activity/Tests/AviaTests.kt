@@ -109,4 +109,31 @@ class Smoke {
             .verifyArrivalDateText("+ Add return flight")
 
     }
+
+    @Test
+    fun choseDepartureDate() {
+        MainRobot()
+            .choseDepartureDate()
+            .choseDepartureDay()
+            .verifyDepartureDate("3 January, Fri")
+    }
+
+    @Test
+    fun choseArrivalDate() {
+        MainRobot()
+            .choseArrivalDate()
+            .choseDepartureDay()
+            .verifyArrivalDate("8 January, Wed")
+    }
+
+
+    // @Test
+    //fun changeCurrency() {
+    //  RobotSettings()
+    //    .tapOnInfoTab()
+    //  .tapOnSettings()
+    //.tapOnCurrency()
+    //.typeCurrency("Euro")
+    //.checkCurrencyIndex("Euro")
+    //}
 }
