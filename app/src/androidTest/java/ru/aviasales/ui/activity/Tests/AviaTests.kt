@@ -63,7 +63,7 @@ class TestExample {
         MainRobot()
             .chosePassanger()
             .addAdult()
-        MainRobot()
+            .closePassengers()
             .verifyClassAndNumberOfPassenger("2 passengers, economy")
     }
 
@@ -72,8 +72,10 @@ class TestExample {
         MainRobot()
             .chosePassanger()
             .addAdult()
+            .closePassengers()
             .verifyClassAndNumberOfPassenger("2 passengers, economy")
             .removeAdult()
+            .closePassengers()
             .verifyClassAndNumberOfPassenger("1 passenger, economy")
 
     }
@@ -83,6 +85,7 @@ class TestExample {
         MainRobot()
             .chosePassanger()
             .choseBusinessClass()
+            .closePassengers()
             .verifyClassAndNumberOfPassenger("1 passenger, business")
     }
 
@@ -91,8 +94,10 @@ class TestExample {
         MainRobot()
             .chosePassanger()
             .choseBusinessClass()
+            .closePassengers()
             .verifyClassAndNumberOfPassenger("1 passenger, business")
             .choseEconomyClass()
+            .closePassengers()
             .verifyClassAndNumberOfPassenger("1 passenger, economy")
     }
 }
