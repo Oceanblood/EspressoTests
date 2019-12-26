@@ -9,6 +9,7 @@ import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import com.travelpayouts.travel.app.R
 import org.hamcrest.Matchers
 import ru.aviasales.ui.activity.UtilsForTests.isVisible
@@ -28,6 +29,28 @@ class RobotSettings {
             )
         val editCurrency = withId(R.id.editTextMessage)
         val currencyName = withId(R.id.tvCurrencyName)
+        val regionBtn = withId(R.id.btnRegion)
+        val regionName1 = withId(R.id.tvRegionName)
+        val regionName =
+            Matchers.allOf(
+                withId(R.id.tvDirectionName),
+                ViewMatchers.isDescendantOfA(withId(R.id.rvItemsRecycler))
+            )
+    }
+
+    fun tapOnRegion(): RobotSettings {
+        onView(regionBtn).isVisible()
+        onView(regionBtn).perform(click())
+        return this
+    }
+
+    fun choseRegion(text:String): RobotSettings {
+        onView(regionName).isVisible()
+        onView(editCurrency).perform(ViewActions.typeTextIntoFocusedView(text)).check(ViewAssertions.matches(
+            withText(text)))
+        onView(regionName).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0,
+            click()))
+        return this
     }
 
     fun typeCurrency(currency: String): RobotSettings {
@@ -63,6 +86,5 @@ class RobotSettings {
         onView(currencyText).check(ViewAssertions.matches(ViewMatchers.withText(id)))
         return this
     }
-
 
 }

@@ -12,6 +12,7 @@ import org.junit.runner.RunWith
 import ru.aviasales.ui.activity.MainActivity
 import ru.aviasales.ui.activity.Robots.MainRobot
 import ru.aviasales.ui.activity.Robots.ResultRobot
+import ru.aviasales.ui.activity.Robots.RobotSettings
 import java.io.File
 
 
@@ -34,7 +35,7 @@ class Smoke {
         activityRule.launchActivity(Intent())
     }
 
-
+// иногда тест падает, хотя при дебаге все ок. ???
     @Test
     fun searchTicket() {
         MainRobot()
@@ -126,14 +127,26 @@ class Smoke {
             .verifyArrivalDate("8 January, Wed")
     }
 
+// Не смог понять, почему на шаге .typeCurrency апа банально не отдает список, по этой причине тест валится
+    @Test
+    fun changeCurrency() {
+        RobotSettings()
+            .tapOnInfoTab()
+            .tapOnSettings()
+            .tapOnCurrency()
+            .typeCurrency("Euro")
+            .checkCurrencyIndex("Euro")
+    }
+// need to fix this
+    @Test
+    fun changeRegion(){
+        RobotSettings()
+            .tapOnInfoTab()
+            .tapOnSettings()
+            .tapOnRegion()
+            .choseRegion("Russia")
+    }
 
-    // @Test
-    //fun changeCurrency() {
-    //  RobotSettings()
-    //    .tapOnInfoTab()
-    //  .tapOnSettings()
-    //.tapOnCurrency()
-    //.typeCurrency("Euro")
-    //.checkCurrencyIndex("Euro")
-    //}
+
 }
+
