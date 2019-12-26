@@ -43,15 +43,8 @@ class TestExample {
             .choseArrival()
             .enterArrivalCity("Minsk")
             .tapOnSearchBtn()
-            ResultRobot()
-                .verifyResultsIsShown()
-    }
-
-    @Test
-    fun departure() {
-        MainRobot()
-            .addFlightDate()
-
+        ResultRobot()
+            .verifyResultsIsShown()
     }
 
     @Test
@@ -62,7 +55,7 @@ class TestExample {
             .choseArrival()
             .enterArrivalCity("Minsk")
             .switchAirports()
-            .checkAirportsChanges("Minsk","Berlin")
+            .checkAirportsChanges("Minsk", "Berlin")
     }
 
     @Test
@@ -101,11 +94,5 @@ class TestExample {
             .verifyClassAndNumberOfPassenger("1 passenger, business")
             .choseEconomyClass()
             .verifyClassAndNumberOfPassenger("1 passenger, economy")
-    }
-
-    @Test
-    fun addFlight() {
-        MainRobot()
-            .addFlightDate()
     }
 }
