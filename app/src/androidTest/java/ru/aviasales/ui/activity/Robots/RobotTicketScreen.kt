@@ -57,7 +57,7 @@ class MainRobot {
 
     // Main Functions
 
-    fun verifyNumberOfPassengers(number: String): MainRobot {
+    fun verifyClassAndNumberOfPassenger(number: String): MainRobot {
         onView(withId(R.id.passengersTitle)).check(ViewAssertions.matches(withText(number)))
         return this
     }
@@ -87,6 +87,12 @@ class MainRobot {
     fun switchAirports(): MainRobot {
         onView(switchAirportsBtn).isVisible()
         onView(switchAirportsBtn).perform(click())
+        return this
+    }
+
+    fun checkAirportsChanges(departure: String,arrival: String): MainRobot {
+        onView(directionText).check(ViewAssertions.matches(withText(departure)))
+        onView(arrivalText).check(ViewAssertions.matches(withText(arrival)))
         return this
     }
 

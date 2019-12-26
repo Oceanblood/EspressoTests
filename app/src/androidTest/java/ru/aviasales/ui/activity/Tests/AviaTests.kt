@@ -11,6 +11,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import ru.aviasales.ui.activity.MainActivity
 import ru.aviasales.ui.activity.Robots.MainRobot
+import ru.aviasales.ui.activity.Robots.ResultRobot
 import java.io.File
 
 
@@ -42,6 +43,8 @@ class TestExample {
             .choseArrival()
             .enterArrivalCity("Minsk")
             .tapOnSearchBtn()
+            ResultRobot()
+                .verifyResultsIsShown()
     }
 
     @Test
@@ -54,6 +57,12 @@ class TestExample {
     @Test
     fun switchAirports() {
         MainRobot()
+            .choseDeparture()
+            .enterDepartureCity("Berlin")
+            .choseArrival()
+            .enterArrivalCity("Minsk")
+            .switchAirports()
+            .checkAirportsChanges("Minsk","Berlin")
     }
 
     @Test
@@ -62,7 +71,7 @@ class TestExample {
             .chosePassanger()
             .addAdult()
         MainRobot()
-            .verifyNumberOfPassengers("2 passengers, economy")
+            .verifyClassAndNumberOfPassenger("2 passengers, economy")
     }
 
     @Test
@@ -70,9 +79,9 @@ class TestExample {
         MainRobot()
             .chosePassanger()
             .addAdult()
-            .verifyNumberOfPassengers("2 passengers, economy")
+            .verifyClassAndNumberOfPassenger("2 passengers, economy")
             .removeAdult()
-            .verifyNumberOfPassengers("1 passenger, economy")
+            .verifyClassAndNumberOfPassenger("1 passenger, economy")
 
     }
 
@@ -81,6 +90,17 @@ class TestExample {
         MainRobot()
             .chosePassanger()
             .choseBusinessClass()
+            .verifyClassAndNumberOfPassenger("1 passenger, business")
+    }
+
+    @Test
+    fun switchBusinessOnEconomyClass() {
+        MainRobot()
+            .chosePassanger()
+            .choseBusinessClass()
+            .verifyClassAndNumberOfPassenger("1 passenger, business")
+            .choseEconomyClass()
+            .verifyClassAndNumberOfPassenger("1 passenger, economy")
     }
 
     @Test
