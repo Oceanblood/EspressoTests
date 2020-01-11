@@ -62,7 +62,7 @@ class MainRobot {
             allOf(withId(R.id.tvDate), isDescendantOfA(withId(R.id.returnDateView)))
         val dateNumberBtn = withId(R.id.calendar_grid)
         val calendarDepartureDate = allOf(
-            withText("3"),
+            withText("11"),
             withParent(
                 withParent(
                     allOf(
@@ -73,7 +73,7 @@ class MainRobot {
             )
         )
         val calendarArrivalDate = allOf(
-            withText("8"),
+            withText("21"),
             withParent(
                 withParent(
                     allOf(

@@ -29,7 +29,7 @@ class Smoke {
         val prefsNames = File(ctx.filesDir.parentFile, "shared_prefs").list() ?: return
         for (fileName in prefsNames) {
             ctx.getSharedPreferences(fileName.replace(".xml", ""), Context.MODE_PRIVATE)
-                .edit().clear().commit()
+               .edit().clear().commit()
         }
 
         activityRule.launchActivity(Intent())
@@ -116,7 +116,7 @@ class Smoke {
         MainRobot()
             .choseDepartureDate()
             .choseDepartureDay()
-            .verifyDepartureDate("3 January, Fri")
+            .verifyDepartureDate("11 January, Sat")
     }
 
     @Test
@@ -124,7 +124,7 @@ class Smoke {
         MainRobot()
             .choseArrivalDate()
             .choseArrivalDay()
-            .verifyArrivalDate("8 January, Wed")
+            .verifyArrivalDate("21 January, Tue")
     }
 
 // Не смог понять, почему на шаге .typeCurrency апа банально не отдает список, по этой причине тест валится
