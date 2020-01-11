@@ -30,10 +30,10 @@ class RobotSettings {
         val editCurrency = withId(R.id.editTextMessage)
         val currencyName = withId(R.id.tvCurrencyName)
         val regionBtn = withId(R.id.btnRegion)
-        val regionName1 = withId(R.id.tvRegionName)
+        // val regionName1 = withId(R.id.tvRegionName)
         val regionName =
             Matchers.allOf(
-                withId(R.id.tvDirectionName),
+                withId(R.id.tvRegionName),
                 ViewMatchers.isDescendantOfA(withId(R.id.rvItemsRecycler))
             )
     }
@@ -44,12 +44,25 @@ class RobotSettings {
         return this
     }
 
-    fun choseRegion(text:String): RobotSettings {
+    fun enterRegion(text: String): RobotSettings {
         onView(regionName).isVisible()
-        onView(editCurrency).perform(ViewActions.typeTextIntoFocusedView(text)).check(ViewAssertions.matches(
-            withText(text)))
-        onView(regionName).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0,
-            click()))
+        onView(editCurrency).perform(ViewActions.typeTextIntoFocusedView(text)).check(
+            ViewAssertions.matches(
+                withText(text)
+            )
+        )
+        closeSoftKeyboard()
+        return this
+    }
+
+    fun choseRegion(region: String): RobotSettings {
+        onView(regionName).check(ViewAssertions.matches(withText(region)))
+        onView(regionName).perform(
+            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                0,
+                click()
+            )
+        )
         return this
     }
 
@@ -58,8 +71,12 @@ class RobotSettings {
         onView(editCurrency).perform(ViewActions.typeTextIntoFocusedView(currency))
             .check(ViewAssertions.matches(ViewMatchers.withText(currency)))
         closeSoftKeyboard()
-        onView(currencyName).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0,
-            click()))
+        onView(currencyName).perform(
+            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                0,
+                click()
+            )
+        )
         return this
     }
 

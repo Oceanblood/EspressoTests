@@ -29,13 +29,13 @@ class Smoke {
         val prefsNames = File(ctx.filesDir.parentFile, "shared_prefs").list() ?: return
         for (fileName in prefsNames) {
             ctx.getSharedPreferences(fileName.replace(".xml", ""), Context.MODE_PRIVATE)
-               .edit().clear().commit()
+                .edit().clear().commit()
         }
 
         activityRule.launchActivity(Intent())
     }
 
-// иногда тест падает, хотя при дебаге все ок. ???
+    // иногда тест падает, хотя при дебаге все ок. ???
     @Test
     fun searchTicket() {
         MainRobot()
@@ -127,7 +127,7 @@ class Smoke {
             .verifyArrivalDate("21 January, Tue")
     }
 
-// Не смог понять, почему на шаге .typeCurrency апа банально не отдает список, по этой причине тест валится
+    // Не смог понять, почему на шаге .typeCurrency апа банально не отдает список, по этой причине тест валится
     @Test
     fun changeCurrency() {
         RobotSettings()
@@ -137,14 +137,17 @@ class Smoke {
             .typeCurrency("Euro")
             .checkCurrencyIndex("Euro")
     }
-// need to fix this
+
+    // need to fix this
     @Test
-    fun changeRegion(){
+    fun changeRegion() {
         RobotSettings()
             .tapOnInfoTab()
             .tapOnSettings()
             .tapOnRegion()
+            .enterRegion("Russia")
             .choseRegion("Russia")
+
     }
 
 
