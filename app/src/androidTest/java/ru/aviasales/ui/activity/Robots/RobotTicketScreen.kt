@@ -88,11 +88,6 @@ class MainRobot {
 
     // Main Functions
 
-    fun verifyClassAndNumberOfPassenger(number: String): MainRobot {
-        onView(withId(R.id.passengersTitle)).check(ViewAssertions.matches(withText(number)))
-        return this
-    }
-
     fun verifyArrivalDate(arrivalDate: String): MainRobot {
         onView(arrivalDateText).isVisible()
         onView(arrivalDateText).check(ViewAssertions.matches(withText(arrivalDate)))
@@ -181,6 +176,12 @@ class MainRobot {
 
 
     // Bottom sheet Functions
+
+    fun verifyClassAndNumberOfPassenger(number: String): MainRobot {
+        onView(withId(R.id.passengersTitle)).check(ViewAssertions.matches(withText(number)))
+        return this
+    }
+
 
     fun openPassengers(): MainRobot {
         onView(passangersBtn).isVisible()

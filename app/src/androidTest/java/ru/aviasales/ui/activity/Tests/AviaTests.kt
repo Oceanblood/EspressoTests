@@ -35,7 +35,7 @@ class Smoke {
         activityRule.launchActivity(Intent())
     }
 
-    // иногда тест падает, хотя при дебаге все ок. ???
+    // иногда тест падает, хотя при дебаге все ок. не смог понять почему
     @Test
     fun searchTicket() {
         MainRobot()
@@ -138,7 +138,6 @@ class Smoke {
             .checkCurrencyIndex("Euro")
     }
 
-    // need to fix this
     @Test
     fun changeRegion() {
         RobotSettings()
@@ -147,9 +146,10 @@ class Smoke {
             .tapOnRegion()
             .enterRegion("Russia")
             .choseRegion("Russia")
+            .verifyRegion("Russia")
+
 
     }
-
 
 }
 

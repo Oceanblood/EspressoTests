@@ -30,12 +30,13 @@ class RobotSettings {
         val editCurrency = withId(R.id.editTextMessage)
         val currencyName = withId(R.id.tvCurrencyName)
         val regionBtn = withId(R.id.btnRegion)
-        // val regionName1 = withId(R.id.tvRegionName)
+        val region = withId(R.id.tvRegion)
         val regionName =
             Matchers.allOf(
                 withId(R.id.tvRegionName),
                 ViewMatchers.isDescendantOfA(withId(R.id.rvItemsRecycler))
             )
+
     }
 
     fun tapOnRegion(): RobotSettings {
@@ -55,14 +56,15 @@ class RobotSettings {
         return this
     }
 
+    fun verifyRegion(Region: String): RobotSettings {
+        onView(regionBtn).isVisible()
+        onView(region).check(ViewAssertions.matches(withText(Region)))
+        return this
+    }
+
     fun choseRegion(region: String): RobotSettings {
         onView(regionName).check(ViewAssertions.matches(withText(region)))
-        onView(regionName).perform(
-            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
-                0,
-                click()
-            )
-        )
+        onView(regionName).perform(click())
         return this
     }
 
