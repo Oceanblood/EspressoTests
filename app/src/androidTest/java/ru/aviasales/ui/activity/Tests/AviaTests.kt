@@ -116,7 +116,7 @@ class Smoke {
         MainRobot()
             .choseDepartureDate()
             .choseDepartureDay()
-            .verifyDepartureDate("11 January, Sat")
+            .verifyDepartureDate("13 January, Mon")
     }
 
     @Test
@@ -124,7 +124,7 @@ class Smoke {
         MainRobot()
             .choseArrivalDate()
             .choseArrivalDay()
-            .verifyArrivalDate("21 January, Tue")
+            .verifyArrivalDate("28 January, Tue")
     }
 
     // Не смог понять, почему на шаге .typeCurrency апа банально не отдает список, по этой причине тест валится
