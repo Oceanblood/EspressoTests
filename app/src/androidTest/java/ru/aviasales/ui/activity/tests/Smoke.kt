@@ -10,7 +10,9 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import ru.aviasales.ui.activity.MainActivity
-import ru.aviasales.ui.activity.testRobots.*
+import ru.aviasales.ui.activity.testRobots.mainRobot
+import ru.aviasales.ui.activity.testRobots.resultRobot
+import ru.aviasales.ui.activity.testRobots.robotSettings
 import java.io.File
 
 
