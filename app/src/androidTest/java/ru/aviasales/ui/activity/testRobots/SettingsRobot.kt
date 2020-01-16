@@ -1,5 +1,6 @@
-package ru.aviasales.ui.activity.Robots
+package ru.aviasales.ui.activity.testRobots
 
+import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.closeSoftKeyboard
 import androidx.test.espresso.Espresso.onView
@@ -11,27 +12,30 @@ import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import com.travelpayouts.travel.app.R
+import org.hamcrest.Matcher
 import org.hamcrest.Matchers
 import ru.aviasales.ui.activity.UtilsForTests.isVisible
 
+
+fun robotSettings(f: RobotSettings.() -> Unit) = RobotSettings().apply(f)
 
 class RobotSettings {
 
 
     companion object {
-        val infoTab = withId(R.id.bb_appinfo_tab)
-        val settingBtn = withId(R.id.btnSettings)
-        val currencyBtn = withId(R.id.btnCurrency)
-        val currencyText =
+        val infoTab: Matcher<View> = withId(R.id.bb_appinfo_tab)
+        val settingBtn: Matcher<View> = withId(R.id.btnSettings)
+        val currencyBtn: Matcher<View> = withId(R.id.btnCurrency)
+        val currencyText: Matcher<View> =
             Matchers.allOf(
                 withId(R.id.tvCurrencyCode),
                 ViewMatchers.isDescendantOfA(withId(R.id.btnCurrency))
             )
-        val editCurrency = withId(R.id.editTextMessage)
-        val currencyName = withId(R.id.tvCurrencyName)
-        val regionBtn = withId(R.id.btnRegion)
-        val region = withId(R.id.tvRegion)
-        val regionName =
+        val editCurrency: Matcher<View> = withId(R.id.editTextMessage)
+        val currencyName: Matcher<View> = withId(R.id.tvCurrencyName)
+        val regionBtn: Matcher<View> = withId(R.id.btnRegion)
+        val region: Matcher<View> = withId(R.id.tvRegion)
+        val regionName: Matcher<View> =
             Matchers.allOf(
                 withId(R.id.tvRegionName),
                 ViewMatchers.isDescendantOfA(withId(R.id.rvItemsRecycler))
@@ -39,13 +43,12 @@ class RobotSettings {
 
     }
 
-    fun tapOnRegion(): RobotSettings {
+    fun tapOnRegion() {
         onView(regionBtn).isVisible()
         onView(regionBtn).perform(click())
-        return this
     }
 
-    fun enterRegion(text: String): RobotSettings {
+    fun enterRegion(text: String) {
         onView(regionName).isVisible()
         onView(editCurrency).perform(ViewActions.typeTextIntoFocusedView(text)).check(
             ViewAssertions.matches(
@@ -53,25 +56,22 @@ class RobotSettings {
             )
         )
         closeSoftKeyboard()
-        return this
     }
 
-    fun verifyRegion(Region: String): RobotSettings {
+    fun verifyRegion(Region: String) {
         onView(regionBtn).isVisible()
         onView(region).check(ViewAssertions.matches(withText(Region)))
-        return this
     }
 
-    fun choseRegion(region: String): RobotSettings {
+    fun choseRegion(region: String) {
         onView(regionName).check(ViewAssertions.matches(withText(region)))
         onView(regionName).perform(click())
-        return this
     }
 
-    fun typeCurrency(currency: String): RobotSettings {
+    fun typeCurrency(currency: String) {
         onView(editCurrency).isVisible()
         onView(editCurrency).perform(ViewActions.typeTextIntoFocusedView(currency))
-            .check(ViewAssertions.matches(ViewMatchers.withText(currency)))
+            .check(ViewAssertions.matches(withText(currency)))
         closeSoftKeyboard()
         onView(currencyName).perform(
             RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
@@ -79,31 +79,26 @@ class RobotSettings {
                 click()
             )
         )
-        return this
     }
 
 
-    fun tapOnInfoTab(): RobotSettings {
+    fun tapOnInfoTab() {
         onView(infoTab).isVisible()
         onView(infoTab).perform(click())
-        return this
     }
 
-    fun tapOnSettings(): RobotSettings {
+    fun tapOnSettings() {
         onView(settingBtn).isVisible()
         onView(settingBtn).perform(click())
-        return this
     }
 
-    fun tapOnCurrency(): RobotSettings {
+    fun tapOnCurrency() {
         onView(currencyBtn).isVisible()
         onView(currencyBtn).perform(click())
-        return this
     }
 
-    fun checkCurrencyIndex(id: String): RobotSettings {
-        onView(currencyText).check(ViewAssertions.matches(ViewMatchers.withText(id)))
-        return this
+    fun checkCurrencyIndex(id: String) {
+        onView(currencyText).check(ViewAssertions.matches(withText(id)))
     }
 
 }

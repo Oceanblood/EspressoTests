@@ -1,19 +1,21 @@
-package ru.aviasales.ui.activity.Robots
+package ru.aviasales.ui.activity.testRobots
 
+import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.typeTextIntoFocusedView
 import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
-import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.*
 import com.travelpayouts.travel.app.R
-import org.hamcrest.Matchers
+import org.hamcrest.Matcher
 import org.hamcrest.Matchers.allOf
 import ru.aviasales.ui.activity.UtilsForTests.isInvisible
 import ru.aviasales.ui.activity.UtilsForTests.isVisible
 
+
+fun mainRobot(f: MainRobot.() -> Unit) = MainRobot().apply(f)
 
 class MainRobot {
 
@@ -22,46 +24,46 @@ class MainRobot {
 
         // Main Screen Btn & Views
 
-        val departureBtn = withId(R.id.flDeparture)
-        val arrivalBtn = withId(R.id.flArrival)
-        val directionText =
+        val departureBtn: Matcher<View> = withId(R.id.flDeparture)
+        val arrivalBtn: Matcher<View> = withId(R.id.flArrival)
+        val directionText: Matcher<View> =
             allOf(withId(R.id.tvDirectionName), isDescendantOfA(withId(R.id.flDeparture)))
-        val arrivalText =
+        val arrivalText: Matcher<View> =
             allOf(withId(R.id.tvDirectionName), isDescendantOfA(withId(R.id.flArrival)))
-        val switchAirportsBtn = withId(R.id.ivSwitch)
-        val searchTicketsBtn = withId(R.id.searchButton)
-        val editArrAndDepfield = withId(R.id.editTextMessage)
-        val selectedAirportBtn = withId(R.id.rvSelectedAirport)
-        val passangersBtn = withId(R.id.passengersView)
+        val switchAirportsBtn: Matcher<View> = withId(R.id.ivSwitch)
+        val searchTicketsBtn: Matcher<View> = withId(R.id.searchButton)
+        val editArrAndDeparchfield: Matcher<View> = withId(R.id.editTextMessage)
+        val selectedAirportBtn: Matcher<View> = withId(R.id.rvSelectedAirport)
+        val passengersBtn: Matcher<View> = withId(R.id.passengersView)
 
         // Bottom sheet Btns & Views
 
-        val addPassangerBtn = (Matchers.allOf(
-            ViewMatchers.withId(R.id.btnIncrement),
-            ViewMatchers.isDescendantOfA(ViewMatchers.withId(R.id.countAdults))
+        val addPassengerBtn: Matcher<View> = (allOf(
+            withId(R.id.btnIncrement),
+            isDescendantOfA(withId(R.id.countAdults))
         ))
-        val removePassangerBtn = (Matchers.allOf(
-            ViewMatchers.withId(R.id.btnDecrement),
-            ViewMatchers.isDescendantOfA(ViewMatchers.withId(R.id.countAdults))
+        val removePassangerBtn: Matcher<View> = (allOf(
+            withId(R.id.btnDecrement),
+            isDescendantOfA(withId(R.id.countAdults))
         ))
-        val countOfPassangers =
+        val countOfPassangers: Matcher<View> =
             allOf(withId(R.id.passengersTitle), isDescendantOfA(withId(R.id.passengersView)))
-        val closePassengersBtn = withId(R.id.btnClosePassengers)
-        val numberOfPassangersView = withId(R.id.passengersTitle)
-        val economyClassBtn = withId(R.id.rbEconomy)
-        val businessBtn = withId(R.id.rbBusiness)
+        val closePassengersBtn: Matcher<View> = withId(R.id.btnClosePassengers)
+        val numberOfPassangersView: Matcher<View> = withId(R.id.passengersTitle)
+        val economyClassBtn: Matcher<View> = withId(R.id.rbEconomy)
+        val businessBtn: Matcher<View> = withId(R.id.rbBusiness)
 
         //Calendar
 
-        val departureDateBtn = withId(R.id.departureDateView)
-        val returnDateBtn = withId(R.id.returnDateView)
-        val iDointNeedticketBtn = withId(R.id.btnAdditionalFirst)
-        val departureDateText =
+        val departureDateBtn: Matcher<View> = withId(R.id.departureDateView)
+        val returnDateBtn: Matcher<View> = withId(R.id.returnDateView)
+        val iDointNeedticketBtn: Matcher<View> = withId(R.id.btnAdditionalFirst)
+        val departureDateText: Matcher<View> =
             allOf(withId(R.id.tvDate), isDescendantOfA(withId(R.id.departureDateView)))
-        val arrivalDateText =
+        val arrivalDateText: Matcher<View> =
             allOf(withId(R.id.tvDate), isDescendantOfA(withId(R.id.returnDateView)))
-        val dateNumberBtn = withId(R.id.calendar_grid)
-        val calendarDepartureDate = allOf(
+        val dateNumberBtn: Matcher<View> = withId(R.id.calendar_grid)
+        val calendarDepartureDate: Matcher<View> = allOf(
             withText("13"),
             withParent(
                 withParent(
@@ -72,7 +74,7 @@ class MainRobot {
                 )
             )
         )
-        val calendarArrivalDate = allOf(
+        val calendarArrivalDate: Matcher<View> = allOf(
             withText("28"),
             withParent(
                 withParent(
@@ -88,62 +90,53 @@ class MainRobot {
 
     // Main Functions
 
-    fun verifyArrivalDate(arrivalDate: String): MainRobot {
+    fun verifyArrivalDate(arrivalDate: String) {
         onView(arrivalDateText).isVisible()
         onView(arrivalDateText).check(ViewAssertions.matches(withText(arrivalDate)))
-        return this
     }
 
-    fun verifyDepartureDate(departureDate: String): MainRobot {
+    fun verifyDepartureDate(departureDate: String) {
         onView(departureDateText).isVisible()
         onView(departureDateText).check(ViewAssertions.matches(withText(departureDate)))
-        return this
     }
 
-    fun choseDepartureCity(): MainRobot {
+    fun choseDepartureCity() {
         onView(departureBtn).isVisible()
         onView(departureBtn).perform(click())
-        return this
     }
 
-    fun choseArrivalCity(): MainRobot {
+    fun choseArrivalCity() {
         onView(arrivalBtn).isVisible()
         onView(arrivalBtn).perform(click())
-        return this
     }
 
-    fun switchAirports(): MainRobot {
+    fun switchAirports() {
         onView(switchAirportsBtn).isVisible()
         onView(switchAirportsBtn).perform(click())
-        return this
     }
 
-    fun checkAirportsChanges(departure: String, arrival: String): MainRobot {
+    fun checkAirportsChanges(departure: String, arrival: String) {
         onView(directionText).check(ViewAssertions.matches(withText(departure)))
         onView(arrivalText).check(ViewAssertions.matches(withText(arrival)))
-        return this
     }
 
-    fun choseDepartureDate(): MainRobot {
+    fun choseDepartureDate() {
         onView(departureDateBtn).isVisible()
         onView(departureDateBtn).perform(click())
-        return this
     }
 
-    fun choseArrivalDate(): MainRobot {
+    fun choseArrivalDate() {
         onView(returnDateBtn).isVisible()
         onView(returnDateBtn).perform(click())
-        return this
     }
 
-    fun tapOnSearchBtn(): MainRobot {
+    fun tapOnSearchBtn() {
         onView(searchTicketsBtn).isVisible()
         onView(searchTicketsBtn).perform(click())
-        return this
     }
 
-    fun enterDepartureCity(departure: String): MainRobot {
-        onView((editArrAndDepfield)).perform(typeTextIntoFocusedView(departure))
+    fun enterDepartureCity(departure: String) {
+        onView((editArrAndDeparchfield)).perform(typeTextIntoFocusedView(departure))
             .check(ViewAssertions.matches(withText(departure)))
         onView((selectedAirportBtn)).isVisible()
         onView(selectedAirportBtn).perform(
@@ -153,13 +146,12 @@ class MainRobot {
             )
         )
         onView((departureBtn)).isVisible()
-        onView((editArrAndDepfield)).isInvisible()
+        onView((editArrAndDeparchfield)).isInvisible()
         onView(directionText).check(ViewAssertions.matches(withText(departure)))
-        return this
     }
 
-    fun enterArrivalCity(arrival: String): MainRobot {
-        onView((editArrAndDepfield)).perform(typeTextIntoFocusedView(arrival))
+    fun enterArrivalCity(arrival: String) {
+        onView((editArrAndDeparchfield)).perform(typeTextIntoFocusedView(arrival))
             .check(ViewAssertions.matches(withText(arrival)))
         onView((selectedAirportBtn)).isVisible()
         onView(selectedAirportBtn).perform(
@@ -169,96 +161,84 @@ class MainRobot {
             )
         )
         onView((departureBtn)).isVisible()
-        onView((editArrAndDepfield)).isInvisible()
+        onView((editArrAndDeparchfield)).isInvisible()
         onView(arrivalText).check(ViewAssertions.matches(withText(arrival)))
-        return this
     }
 
 
     // Bottom sheet Functions
 
-    fun verifyClassAndNumberOfPassenger(number: String): MainRobot {
+    fun verifyClassAndNumberOfPassenger(number: String) {
         onView(withId(R.id.passengersTitle)).check(ViewAssertions.matches(withText(number)))
-        return this
     }
 
 
-    fun openPassengers(): MainRobot {
-        onView(passangersBtn).isVisible()
-        onView(passangersBtn).perform(click())
-        return this
+    fun openPassengers() {
+        onView(passengersBtn).isVisible()
+        onView(passengersBtn).perform(click())
     }
 
-    fun addAdult(): MainRobot {
+    fun addAdult() {
         openPassengers()
-        onView(addPassangerBtn).isVisible()
-        onView(addPassangerBtn).perform(click())
-        return this
+        onView(addPassengerBtn).isVisible()
+        onView(addPassengerBtn).perform(click())
     }
 
-    fun removeAdult(): MainRobot {
+    fun removeAdult() {
         openPassengers()
         onView(removePassangerBtn).isVisible()
         onView(removePassangerBtn).perform(click())
-        return this
     }
 
-    fun choseEconomyClass(): MainRobot {
+    fun choseEconomyClass() {
         openPassengers()
         onView(economyClassBtn).isVisible()
         onView(economyClassBtn).perform(click())
 
-        return this
     }
 
-    fun choseBusinessClass(): MainRobot {
+    fun choseBusinessClass() {
         openPassengers()
         onView(businessBtn).isVisible()
         onView(businessBtn).perform(click())
-        return this
     }
 
-    fun verifyEconomySelected(): MainRobot {
+    fun verifyEconomySelected() {
         openPassengers()
         onView(economyClassBtn).isVisible()
         // onView(economyClassBtn).
-        return this
     }
 
-    fun closePassengers(): MainRobot {
+    fun closePassengers() {
         onView(closePassengersBtn).isVisible()
         onView(closePassengersBtn).perform(click())
-        return this
     }
 
     // Calendar Func
 
-    fun tapOnDontNeedTicketBtn(): MainRobot {
+    fun tapOnDontNeedTicketBtn() {
         onView(iDointNeedticketBtn).isVisible()
         onView(iDointNeedticketBtn).perform(click())
-        return this
     }
 
-    fun verifyArrivalDateText(text: String): MainRobot {
+    fun verifyArrivalDateText(text: String) {
         onView(arrivalDateText).check(ViewAssertions.matches(withText(text)))
-        return this
     }
 
-    fun choseDepartureDay(): MainRobot {
+    fun choseDepartureDay() {
         onView(dateNumberBtn).isVisible()
         onView(calendarDepartureDate).isVisible()
         onView(calendarDepartureDate).perform(click())
-        return this
     }
 
-    fun choseArrivalDay(): MainRobot {
+    fun choseArrivalDay() {
         onView(dateNumberBtn).isVisible()
         onView(calendarArrivalDate).isVisible()
         onView(calendarArrivalDate).perform(click())
-        return this
     }
 
 }
+
 
 
 
